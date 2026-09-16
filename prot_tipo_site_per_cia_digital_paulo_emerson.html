@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INMEAR | Paulo Emerson - Perícia Forense Digital, Investigação Cibernética e Auditoria</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            800: '#0b1329',
+                            900: '#070c1b',
+                            950: '#03060f',
+                        },
+                        cyanAccent: '#00f2fe',
+                        blueAccent: '#4facfe',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glow-effect {
+            box-shadow: 0 0 25px -5px rgba(79, 172, 254, 0.25);
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 30px 0px rgba(0, 242, 254, 0.35);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-navy-950 text-slate-200 font-sans antialiased bg-grid-pattern selection:bg-cyan-500 selection:text-navy-950">
+
+    <!-- HEADER NAVBAR -->
+    <header class="sticky top-0 z-50 bg-navy-900/90 backdrop-blur-md border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-navy-950 font-black text-xl shadow-lg group-hover:scale-105 transition-transform">
+                    IN
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-wider text-white">INMEAR<span class="text-cyan-400">.com</span></span>
+                    <span class="text-[10px] uppercase tracking-widest text-slate-400">Perícia Forense & TI Legal</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#inicio" class="hover:text-cyan-400 transition-colors">Início</a>
+                <a href="#perito" class="hover:text-cyan-400 transition-colors">O Perito</a>
+                <a href="#servicos" class="hover:text-cyan-400 transition-colors">Serviços</a>
+                <a href="#certificacoes" class="hover:text-cyan-400 transition-colors">Certificações</a>
+                <a href="#cplp" class="hover:text-cyan-400 transition-colors">Atuação CPLP</a>
+                <a href="#triagem" class="hover:text-cyan-400 transition-colors">Triagem de Caso</a>
+            </nav>
+
+            <!-- CTA Header Button -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#contato" class="px-5 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-navy-950 font-bold hover:shadow-lg hover:shadow-cyan-500/20 transition-all flex items-center gap-2 text-sm">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Análise do Caso</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-slate-300 hover:text-white text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-navy-900 border-b border-slate-800 px-6 py-4 space-y-3">
+            <a href="#inicio" class="block text-slate-300 hover:text-cyan-400 py-2">Início</a>
+            <a href="#perito" class="block text-slate-300 hover:text-cyan-400 py-2">O Perito</a>
+            <a href="#servicos" class="block text-slate-300 hover:text-cyan-400 py-2">Serviços</a>
+            <a href="#certificacoes" class="block text-slate-300 hover:text-cyan-400 py-2">Certificações</a>
+            <a href="#cplp" class="block text-slate-300 hover:text-cyan-400 py-2">Atuação CPLP</a>
+            <a href="#triagem" class="block text-slate-300 hover:text-cyan-400 py-2">Triagem de Caso</a>
+            <a href="#contato" class="block text-center py-3 bg-cyan-500 text-navy-950 font-bold rounded-lg mt-2">Atendimento Pericial</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">
+        <!-- Canvas Background de Rede Neural / Cibersegurança -->
+        <canvas id="neuralCanvas" class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-65"></canvas>
+        <div class="absolute inset-0 bg-gradient-to-b from-navy-950/40 via-transparent to-navy-950/80 pointer-events-none z-0"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Content -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/80 text-xs text-cyan-400 font-medium">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Perito Judicial & Assistente Técnico Extrajudicial
+                    </div>
+
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                        Perícia Forense Digital, <br class="hidden sm:inline"/>
+                        <span class="gradient-text">Investigação Cibernética</span> <br/>
+                        & Análise Bancária
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+                        Produção de provas digitais inquestionáveis, laudos técnicos com validade jurídica, auditoria de segurança cibernética e pareceres em litígios complexos. Dupla formação especializada em **Direito** e **Tecnologia da Informação**.
+                    </p>
+
+                    <!-- Trust Badges -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center gap-3">
+                            <i class="fa-solid fa-scale-balanced text-cyan-400 text-xl"></i>
+                            <div class="text-xs">
+                                <p class="text-white font-semibold">Validade Jurídica</p>
+                                <p class="text-slate-400">Cadeia de Custódia ISO 27037</p>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center gap-3">
+                            <i class="fa-solid fa-building-columns text-cyan-400 text-xl"></i>
+                            <div class="text-xs">
+                                <p class="text-white font-semibold">Fraudes Bancárias</p>
+                                <p class="text-slate-400">Análise Financeira TI</p>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center gap-3 col-span-2 sm:col-span-1">
+                            <i class="fa-solid fa-earth-americas text-cyan-400 text-xl"></i>
+                            <div class="text-xs">
+                                <p class="text-white font-semibold">Atuação CPLP</p>
+                                <p class="text-slate-400">Internacional Lusófona</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Group -->
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
+                        <a href="#contato" class="px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-navy-950 font-bold text-base hover:shadow-xl hover:shadow-cyan-500/20 transition-all text-center flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-file-contract text-lg"></i>
+                            Solicitar Parecer ou Laudo
+                        </a>
+                        <a href="#triagem" class="px-6 py-4 rounded-xl bg-slate-900 border border-slate-700 text-white font-semibold text-base hover:bg-slate-800 transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-sliders text-cyan-400"></i>
+                            Simulador de Caso
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Right Profile Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <!-- Card Frame -->
+                        <div class="relative rounded-2xl bg-gradient-to-b from-slate-800 to-navy-900 border border-slate-700 p-6 shadow-2xl glow-effect">
+                            <div class="flex flex-col items-center text-center">
+                                <!-- Profile Photo Frame -->
+                                <div class="relative mb-5 w-full flex justify-center">
+                                    <div class="w-48 sm:w-56 h-64 sm:h-76 rounded-2xl overflow-hidden border-2 border-cyan-400/80 p-1 bg-navy-950 shadow-inner flex items-center justify-center relative group">
+                                        <!-- Photo Element -->
+                                        <img src="https://placehold.co/400x533/0b1329/00f2fe?text=Paulo+Emerson" alt="Perito Paulo Emerson" class="w-full h-full object-cover object-top rounded-xl transition-opacity duration-500 shadow-md" id="profileImage">
+                                        <!-- Loading Overlay -->
+                                        <div id="photoLoader" class="absolute inset-0 bg-navy-950/85 flex flex-col items-center justify-center gap-2 rounded-xl text-xs text-cyan-400">
+                                            <i class="fa-solid fa-spinner animate-spin text-xl"></i>
+                                            <span class="text-[10px] text-slate-300">Carregando foto do Perito...</span>
+                                        </div>
+                                    </div>
+                                    <span class="absolute -bottom-2 right-4 sm:right-8 bg-emerald-500 text-navy-950 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                                        Ativo
+                                    </span>
+                                </div>
+
+                                <h2 class="text-2xl font-extrabold text-white">Paulo Emerson</h2>
+                                <p class="text-cyan-400 text-sm font-medium mt-1">Perito Forense Digital & Investigador Cibernético</p>
+                                <p class="text-xs text-slate-400 mt-1">CEO INMEAR • Co-desenvolvedor Portal da Transparência • APDADOS</p>
+
+                                <hr class="w-full border-slate-800 my-4">
+
+                                <div class="w-full text-left space-y-2 text-xs">
+                                    <div class="flex items-center gap-2 text-slate-300">
+                                        <i class="fa-solid fa-graduation-cap text-cyan-400 w-4"></i>
+                                        <span><strong>Dupla Formação:</strong> Direito & Processamento de Dados</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-slate-300">
+                                        <i class="fa-solid fa-certificate text-cyan-400 w-4"></i>
+                                        <span><strong>Certificações:</strong> CISSP, CISA, CISM, CISO, ISO 27001</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-slate-300">
+                                        <i class="fa-solid fa-gavel text-cyan-400 w-4"></i>
+                                        <span><strong>Atuação:</strong> Perito Judicial & Assistente Técnico</span>
+                                    </div>
+                                </div>
+
+                                <!-- CPLP Flags Bar -->
+                                <div class="w-full mt-5 pt-3 border-t border-slate-800/80">
+                                    <p class="text-[11px] text-slate-400 uppercase tracking-widest text-center mb-2 font-semibold">Comunidade CPLP</p>
+                                    <div class="flex justify-center items-center gap-2 text-lg">
+                                        <span title="Brasil">🇦🇴</span>
+                                        <span title="Brasil">🇧🇷</span>
+                                        <span title="Cabo Verde">🇨🇻</span>
+                                        <span title="Guiné-Bissau">🇬🇼</span>
+                                        <span title="Guiné Equatorial">🇬🇶</span>
+                                        <span title="Moçambique">🇲🇿</span>
+                                        <span title="Portugal">🇵🇹</span>
+                                        <span title="São Tomé e Príncipe">🇸🇹</span>
+                                        <span title="Timor-Leste">🇹🇱</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT & CREDENTIALS SECTION -->
+    <section id="perito" class="py-20 bg-navy-900 border-y border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs uppercase tracking-widest text-cyan-400 font-bold mb-2">Qualificação Técnica Diferenciada</h2>
+                <h3 class="text-3xl font-bold text-white">A Intersecção Perfeita Entre o Direito e a Tecnologia</h3>
+                <p class="text-slate-400 mt-3 text-sm sm:text-base">
+                    Com sólida formação nas áreas de Tecnologia da Informação e Ciências Jurídicas, o Perito Paulo Emerson traduz a complexidade técnica dos dados em provas sólidas e laudos inteligíveis para magistrados e advogados.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Card 1: Formação Acadêmica -->
+                <div class="p-6 rounded-2xl bg-navy-950 border border-slate-800 hover:border-cyan-500/50 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Graduação e Mestrados</h4>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-cyan-400 mt-0.5"></i>
+                            <span><strong>Direito:</strong> Ciências Jurídicas</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-cyan-400 mt-0.5"></i>
+                            <span><strong>Tecnologia:</strong> Processamento de Dados</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-cyan-400 mt-0.5"></i>
+                            <span>Mestrando em Mediação</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-cyan-400 mt-0.5"></i>
+                            <span>Mestrando em Direção Estratégica (Gerência)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 2: Especializações Principais -->
+                <div class="p-6 rounded-2xl bg-navy-950 border border-slate-800 hover:border-cyan-500/50 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Especialidades Técnicas</h4>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-blue-400 mt-0.5"></i>
+                            <span>Perícia Forense Digital e Investigação Cibernética</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-blue-400 mt-0.5"></i>
+                            <span>Direito Digital, LGPD & Compliance</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-blue-400 mt-0.5"></i>
+                            <span>Infraestrutura de Missão Crítica - Data Center</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-blue-400 mt-0.5"></i>
+                            <span>Redes, Cibersegurança & Software Livre</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 3: Análise Bancária e Financeira -->
+                <div class="p-6 rounded-2xl bg-navy-950 border border-slate-800 hover:border-cyan-500/50 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-vault"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Análise Bancária & Financeira</h4>
+                    <p class="text-xs text-slate-400 mb-3 leading-relaxed">
+                        Perícia especializada em rastreamento de operações financeiras complexas, contestações de fraudes eletrônicas e análise de logs bancários.
+                    </p>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
+                            <span>Análise de Fraudes Eletrônicas e Engenharia Social</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
+                            <span>Rastreamento de Invasões e Brechas de Dados Bancários</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="servicos" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest text-cyan-400 font-bold mb-2">Escopo Profissional</h2>
+                    <h3 class="text-3xl font-bold text-white">Serviços Periciais e de Consultoria</h3>
+                </div>
+                <p class="text-slate-400 text-sm max-w-md mt-3 md:mt-0">
+                    Atuação completa como Perito Judicial nomeado ou Assistente Técnico contratado para emissão de Laudos e Pareceres.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Service 1 -->
+                <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/80 transition-all group glow-hover">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Perícia Forense Digital</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                        Aquisição preservada de evidências em celulares, computadores, servidores e nuvem. Garantia rígida da cadeia de custódia conforme normas ABNT ISO/IEC 27037.
+                    </p>
+                    <span class="text-xs text-cyan-400 font-semibold group-hover:underline inline-flex items-center gap-1">
+                        Saiba mais <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </span>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/80 transition-all group glow-hover">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-user-ninja"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Investigação Cibernética</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                        Apuramento de vazamentos de dados, concorrência desleal, sabotagem corporativa, invasões de rede, crimes virtuais e falsidade ideológica digital.
+                    </p>
+                    <span class="text-xs text-cyan-400 font-semibold group-hover:underline inline-flex items-center gap-1">
+                        Saiba mais <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </span>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/80 transition-all group glow-hover">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-piggy-bank"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Análise Bancária e Financeira</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                        Exame de transações bancárias suspeitas, desvio de fundos digitais, vulnerabilidades em sistemas de pagamento e auditoria de logs de internet banking.
+                    </p>
+                    <span class="text-xs text-cyan-400 font-semibold group-hover:underline inline-flex items-center gap-1">
+                        Saiba mais <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </span>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/80 transition-all group glow-hover">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-file-signature"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Laudos e Pareceres Técnicos</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                        Confecção de Laudos Periciais Judiciais e Pareceres Técnicos de Assistência para fundamentar petições iniciais ou contestações em litígios judiciais.
+                    </p>
+                    <span class="text-xs text-cyan-400 font-semibold group-hover:underline inline-flex items-center gap-1">
+                        Saiba mais <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </span>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/80 transition-all group glow-hover">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Auditoria GRC & Compliance LGPD</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                        Auditoria de Conformidade com ISO 27001, avaliação de governança (GRC), Privacy Compliance Officer, DPO As a Service e testes de segurança.
+                    </p>
+                    <span class="text-xs text-cyan-400 font-semibold group-hover:underline inline-flex items-center gap-1">
+                        Saiba mais <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </span>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/80 transition-all group glow-hover">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">PTAM & Avaliação de TIC</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                        Parecer Técnico de Avaliação Mercadológica (PTAM) aplicado a ativos de tecnologia, avaliação de softwares, infraestrutura de Missão Crítica e Data Center.
+                    </p>
+                    <span class="text-xs text-cyan-400 font-semibold group-hover:underline inline-flex items-center gap-1">
+                        Saiba mais <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS & FRAMEWORKS SECTION -->
+    <section id="certificacoes" class="py-20 bg-navy-900 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs uppercase tracking-widest text-cyan-400 font-bold mb-2">Rigores e Padrões Internacionais</h2>
+                <h3 class="text-3xl font-bold text-white">Certificações & Frameworks Dominados</h3>
+                <p class="text-slate-400 text-sm mt-2">
+                    Mais de 48 certificações atestadas e domínio dos principais frameworks globais de cibersegurança e administração pública.
+                </p>
+            </div>
+
+            <!-- Interactive Accordion for Certifications -->
+            <div class="max-w-4xl mx-auto space-y-4" id="certAccordion">
+                
+                <!-- Item 1 -->
+                <div class="border border-slate-800 rounded-xl bg-navy-950 overflow-hidden">
+                    <button class="accordion-header w-full px-6 py-4 text-left font-bold text-white flex justify-between items-center hover:bg-slate-900/50 transition-colors">
+                        <span class="flex items-center gap-3 text-sm sm:text-base">
+                            <i class="fa-solid fa-shield-cat text-cyan-400"></i>
+                            Segurança da Informação & Cibersegurança
+                        </span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i>
+                    </button>
+                    <div class="accordion-content hidden px-6 pb-5 pt-1 text-xs text-slate-300 border-t border-slate-800/50">
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <span class="p-2 rounded bg-slate-900 border border-slate-800 text-center font-mono text-cyan-400">CISSP</span>
+                            <span class="p-2 rounded bg-slate-900 border border-slate-800 text-center font-mono text-cyan-400">CISM</span>
+                            <span class="p-2 rounded bg-slate-900 border border-slate-800 text-center font-mono text-cyan-400">CISA</span>
+                            <span class="p-2 rounded bg-slate-900 border border-slate-800 text-center font-mono text-cyan-400">CISO</span>
+                            <span class="p-2 rounded bg-slate-900 border border-slate-800 text-center font-mono text-cyan-400">CCSA</span>
+                            <span class="p-2 rounded bg-slate-900 border border-slate-800 text-center font-mono text-cyan-400">CSIRT Lead</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="border border-slate-800 rounded-xl bg-navy-950 overflow-hidden">
+                    <button class="accordion-header w-full px-6 py-4 text-left font-bold text-white flex justify-between items-center hover:bg-slate-900/50 transition-colors">
+                        <span class="flex items-center gap-3 text-sm sm:text-base">
+                            <i class="fa-solid fa-certificate text-cyan-400"></i>
+                            Gestão de Riscos, ISOs & NIST Frameworks
+                        </span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i>
+                    </button>
+                    <div class="accordion-content hidden px-6 pb-5 pt-1 text-xs text-slate-300 border-t border-slate-800/50">
+                        <p class="mb-3 text-slate-400">Certificado Lead Auditor e Implementador em normas internacionais:</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <div class="p-2.5 rounded bg-slate-900 border border-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-check-circle text-emerald-400"></i>
+                                <span>Lead Auditor ISO/IEC 27001:2022</span>
+                            </div>
+                            <div class="p-2.5 rounded bg-slate-900 border border-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-check-circle text-emerald-400"></i>
+                                <span>Lead Implementer ISO 27001:2022</span>
+                            </div>
+                            <div class="p-2.5 rounded bg-slate-900 border border-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-check-circle text-emerald-400"></i>
+                                <span>NIST Cybersecurity Framework Lead</span>
+                            </div>
+                            <div class="p-2.5 rounded bg-slate-900 border border-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-check-circle text-emerald-400"></i>
+                                <span>+ de 40 Normas ISO Mapeadas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="border border-slate-800 rounded-xl bg-navy-950 overflow-hidden">
+                    <button class="accordion-header w-full px-6 py-4 text-left font-bold text-white flex justify-between items-center hover:bg-slate-900/50 transition-colors">
+                        <span class="flex items-center gap-3 text-sm sm:text-base">
+                            <i class="fa-solid fa-user-shield text-cyan-400"></i>
+                            Privacidade, DPO & Administração Pública (ENAP)
+                        </span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i>
+                    </button>
+                    <div class="accordion-content hidden px-6 pb-5 pt-1 text-xs text-slate-300 border-t border-slate-800/50">
+                        <div class="space-y-2">
+                            <p>• <strong>DPO & Privacy Compliance Officer:</strong> Mapeamento LGPD e privacidade de dados.</p>
+                            <p>• <strong>ENAP (Escola Nacional de Administração Pública):</strong> Mais de 48 certificações em Contratos, Licitações, Processo Administrativo Disciplinar (PAD), Seguridade e Planejamento Estratégico.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CPLP GLOBAL SECTION -->
+    <section id="cplp" class="py-16 bg-navy-950 relative overflow-hidden border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-slate-900 via-navy-900 to-slate-900 rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-2xl relative">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">Atuação Internacional</span>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-white">Comunidade dos Países de Língua Portuguesa (CPLP)</h3>
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            Prestação de pareceres técnicos, perícias e consultorias forenses digitais transfronteiriças. Capacidade operacional para atendimento em demandas jurídicas e corporativas em toda a Lusofonia.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs font-medium text-slate-200">🇦🇴 Angola</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs font-medium text-slate-200">🇧🇷 Brasil</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs font-medium text-slate-200">🇨🇻 Cabo Verde</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs font-medium text-slate-200">🇬🇼 Guiné-Bissau</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs font-medium text-slate-200">🇬🇶 Guiné Equatorial</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs font-medium text-slate-200">🇲🇿 Moçambique</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs font-medium text-slate-200">🇵🇹 Portugal</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs font-medium text-slate-200">🇸🇹 São Tomé e Príncipe</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs font-medium text-slate-200">🇹🇱 Timor-Leste</span>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 text-center flex flex-col items-center justify-center p-6 bg-navy-950/60 rounded-2xl border border-slate-800">
+                        <i class="fa-solid fa-earth-atlantic text-5xl text-cyan-400 mb-3 animate-pulse"></i>
+                        <p class="text-white font-bold text-lg">Suporte Pericial Global</p>
+                        <p class="text-slate-400 text-xs mt-1">Normativas Internacionais e Cooperação Forense</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE CASE DIAGNOSTIC / SIMULATOR -->
+    <section id="triagem" class="py-20 bg-navy-900 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-xs uppercase tracking-widest text-cyan-400 font-bold">Ferramenta Interativa</span>
+                <h3 class="text-2xl sm:text-3xl font-bold text-white mt-1">Simulador de Viabilidade e Triagem do Caso</h3>
+                <p class="text-slate-400 text-xs sm:text-sm mt-2">
+                    Responda 3 perguntas rápidas para entender os procedimentos periciais recomendados para a sua demanda.
+                </p>
+            </div>
+
+            <!-- Quiz Card -->
+            <div class="bg-navy-950 rounded-2xl border border-slate-800 p-6 sm:p-8 shadow-xl relative" id="quizContainer">
+                
+                <!-- Step 1 -->
+                <div id="quizStep1" class="quiz-step">
+                    <span class="text-xs text-cyan-400 font-mono">Passo 1 de 3</span>
+                    <h4 class="text-lg font-bold text-white mt-2 mb-4">Qual é o tipo principal da demanda?</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <button onclick="selectQuizAnswer('tipo', 'bancaria', 2)" class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-left hover:border-cyan-500 hover:bg-slate-800 transition-all flex items-center gap-3">
+                            <i class="fa-solid fa-building-columns text-cyan-400 text-xl"></i>
+                            <div>
+                                <p class="text-sm font-semibold text-white">Fraude Bancária / Financeira</p>
+                                <p class="text-[11px] text-slate-400">PIX, invasão de conta, golpe bancário</p>
+                            </div>
+                        </button>
+                        <button onclick="selectQuizAnswer('tipo', 'forense_mobile', 2)" class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-left hover:border-cyan-500 hover:bg-slate-800 transition-all flex items-center gap-3">
+                            <i class="fa-solid fa-mobile-screen text-cyan-400 text-xl"></i>
+                            <div>
+                                <p class="text-sm font-semibold text-white">Dispositivo Mobile / WhatsApp</p>
+                                <p class="text-[11px] text-slate-400">Extração de mensagens, áudios, prints</p>
+                            </div>
+                        </button>
+                        <button onclick="selectQuizAnswer('tipo', 'invasao_empresa', 2)" class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-left hover:border-cyan-500 hover:bg-slate-800 transition-all flex items-center gap-3">
+                            <i class="fa-solid fa-server text-cyan-400 text-xl"></i>
+                            <div>
+                                <p class="text-sm font-semibold text-white">Ataque Corporativo / Ransomware</p>
+                                <p class="text-[11px] text-slate-400">Vazamento de dados, sequestro de servidor</p>
+                            </div>
+                        </button>
+                        <button onclick="selectQuizAnswer('tipo', 'assistencia_judicial', 2)" class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-left hover:border-cyan-500 hover:bg-slate-800 transition-all flex items-center gap-3">
+                            <i class="fa-solid fa-gavel text-cyan-400 text-xl"></i>
+                            <div>
+                                <p class="text-sm font-semibold text-white">Processo Judicial em Andamento</p>
+                                <p class="text-[11px] text-slate-400">Impugnação de laudo, Quesitos periciais</p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div id="quizStep2" class="quiz-step hidden">
+                    <span class="text-xs text-cyan-400 font-mono">Passo 2 de 3</span>
+                    <h4 class="text-lg font-bold text-white mt-2 mb-4">Qual o estado atual do dispositivo ou das evidências?</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <button onclick="selectQuizAnswer('preservacao', 'intacto', 3)" class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-left hover:border-cyan-500 hover:bg-slate-800 transition-all">
+                            <p class="text-sm font-semibold text-white">Preservado sem alterações</p>
+                            <p class="text-[11px] text-slate-400 mt-1">Dispositivo desligado/guardado imediatamente</p>
+                        </button>
+                        <button onclick="selectQuizAnswer('preservacao', 'em_uso', 3)" class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-left hover:border-cyan-500 hover:bg-slate-800 transition-all">
+                            <p class="text-sm font-semibold text-white">Continua em uso contínuo</p>
+                            <p class="text-[11px] text-slate-400 mt-1">Computador/celular continuou sendo utilizado</p>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Result -->
+                <div id="quizStep3" class="quiz-step hidden">
+                    <div class="text-center py-4">
+                        <div class="w-16 h-16 bg-emerald-500/10 text-emerald-400 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+                            <i class="fa-solid fa-square-check"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white">Diagnóstico Pré-Pericial Gerado</h4>
+                        <p class="text-xs text-slate-300 mt-2 max-w-lg mx-auto" id="quizResultText">
+                            Seu caso exige preservação imediata da **Cadeia de Custódia (ISO 27037)** para evitar a atenuação da validade judicial da prova.
+                        </p>
+                        
+                        <div class="mt-6 p-4 rounded-xl bg-slate-900 border border-slate-800 text-left max-w-md mx-auto space-y-2 text-xs">
+                            <p class="text-cyan-400 font-bold">Recomendações Periciais Imediatas:</p>
+                            <p class="text-slate-300">• Não formate ou limpe o dispositivo afetado.</p>
+                            <p class="text-slate-300">• Não responda a mensagens suspeitas no aplicativo.</p>
+                            <p class="text-slate-300">• Solicite a emissão de Parecer Técnico Prévio.</p>
+                        </div>
+
+                        <div class="mt-6">
+                            <a href="#contato" onclick="prefillContactForm()" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-navy-950 font-bold text-sm">
+                                Preencher Formulário de Atendimento com este Diagnóstico
+                                <i class="fa-solid fa-arrow-down"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION ("FALE CONOSCO") -->
+    <section id="contato" class="py-20 bg-navy-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Info Left Column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-cyan-400 font-bold">Atendimento Confidencial</span>
+                        <h3 class="text-3xl font-extrabold text-white mt-1">Fale Conosco</h3>
+                        <p class="text-slate-400 text-sm mt-3 leading-relaxed">
+                            Submeta os detalhes do seu caso com total sigilo profissional. Atendimento direto para advogados, escritórios, empresas e órgãos públicos.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-navy-900 border border-slate-800">
+                            <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-globe"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase font-semibold">Website Oficial</p>
+                                <p class="text-sm font-bold text-white">www.inmear.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-navy-900 border border-slate-800">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-brands fa-whatsapp text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase font-semibold">WhatsApp & Atendimento Direto</p>
+                                <a href="https://wa.me/556181455000" target="_blank" class="text-sm font-bold text-emerald-400 hover:underline flex items-center gap-1.5">
+                                    +55 61 8145-5000
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-navy-900 border border-slate-800">
+                            <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase font-semibold">Atuação Especializada</p>
+                                <p class="text-sm font-bold text-white">Perícia Judicial, Extrajudicial & Parecer Técnico</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-navy-900 border border-slate-800">
+                            <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-user-lock"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase font-semibold">Sigilo Garantido</p>
+                                <p class="text-sm font-bold text-white">Acordo de Confidencialidade (NDA)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct WhatsApp Quick Action Card -->
+                    <div class="p-6 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-navy-900 border border-emerald-500/30">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-emerald-400 text-3xl"></i>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Urgência Pericial?</h4>
+                                <p class="text-xs text-slate-300">Preservação imediata de evidências voláteis.</p>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/556181455000?text=Olá%20Perito%20Paulo%20Emerson,%20preciso%20de%20uma%20análise%20pericial%20urgente." target="_blank" class="mt-4 w-full py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold text-xs uppercase tracking-wider text-center block transition-all shadow-lg shadow-emerald-950/50">
+                            <i class="fa-brands fa-whatsapp text-sm mr-1"></i> Falar no WhatsApp (+55 61 8145-5000)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form Right Column -->
+                <div class="lg:col-span-7">
+                    <div class="bg-navy-900 rounded-2xl border border-slate-800 p-6 sm:p-8 shadow-2xl relative">
+                        <h4 class="text-xl font-bold text-white mb-2">Formulário de Solicitação Pericial</h4>
+                        <p class="text-xs text-slate-400 mb-6">Preencha o formulário abaixo. Ao enviar, os dados serão formatados e encaminhados diretamente para o WhatsApp oficial do Perito.</p>
+
+                        <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1">Nome Completo *</label>
+                                    <input type="text" required id="formNome" placeholder="Ex: Dr. Carlos Silva" class="w-full px-4 py-2.5 rounded-xl bg-navy-950 border border-slate-800 text-white text-sm focus:border-cyan-500 focus:outline-none transition-colors">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1">E-mail Corporativo / Profissional *</label>
+                                    <input type="email" required id="formEmail" placeholder="nome@empresa.com.br" class="w-full px-4 py-2.5 rounded-xl bg-navy-950 border border-slate-800 text-white text-sm focus:border-cyan-500 focus:outline-none transition-colors">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1">Telefone / WhatsApp *</label>
+                                    <input type="tel" required id="formTelefone" placeholder="(00) 90000-0000" class="w-full px-4 py-2.5 rounded-xl bg-navy-950 border border-slate-800 text-white text-sm focus:border-cyan-500 focus:outline-none transition-colors">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1">Perfil do Solicitante</label>
+                                    <select id="formPerfil" class="w-full px-4 py-2.5 rounded-xl bg-navy-950 border border-slate-800 text-white text-sm focus:border-cyan-500 focus:outline-none transition-colors">
+                                        <option value="Advogado/Escritório">Advogado / Escritório de Advocacia</option>
+                                        <option value="Empresa/Corporativo">Empresa / Corporativo</option>
+                                        <option value="Magistrado/Poder Público">Magistrado / Órgão Público</option>
+                                        <option value="Pessoa Física">Pessoa Física / Particular</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1">Tipo de Serviço Pretendido</label>
+                                    <select id="formServico" class="w-full px-4 py-2.5 rounded-xl bg-navy-950 border border-slate-800 text-white text-sm focus:border-cyan-500 focus:outline-none transition-colors">
+                                        <option value="Análise Bancária e Financeira">Análise Bancária e Financeira</option>
+                                        <option value="Perícia Forense Digital">Perícia Forense Digital</option>
+                                        <option value="Investigação Cibernética">Investigação Cibernética</option>
+                                        <option value="Assistência Técnica Judicial">Assistência Técnica Judicial</option>
+                                        <option value="Auditoria e Compliance LGPD">Auditoria e Compliance LGPD/ISO</option>
+                                        <option value="PTAM e Avaliação TIC">PTAM e Avaliação TIC</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1">Urgência do Caso</label>
+                                    <select id="formUrgencia" class="w-full px-4 py-2.5 rounded-xl bg-navy-950 border border-slate-800 text-white text-sm focus:border-cyan-500 focus:outline-none transition-colors">
+                                        <option value="Alta (Prazo Judicial Próximo)">Alta (Prazo Judicial Próximo)</option>
+                                        <option value="Média (Ajuizamento de Ação)">Média (Ajuizamento de Ação)</option>
+                                        <option value="Baixa (Consultoria Preventiva)">Baixa (Consultoria Preventiva)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Resumo Confidencial do Caso *</label>
+                                <textarea id="formMensagem" required rows="4" placeholder="Descreva brevemente os fatos, o objetivo da perícia e os dispositivos ou sistemas envolvidos..." class="w-full px-4 py-2.5 rounded-xl bg-navy-950 border border-slate-800 text-white text-sm focus:border-cyan-500 focus:outline-none transition-colors"></textarea>
+                            </div>
+
+                            <div class="flex items-center gap-2">
+                                <input type="checkbox" required id="formTermos" class="rounded bg-navy-950 border-slate-800 text-cyan-500 focus:ring-0">
+                                <label for="formTermos" class="text-xs text-slate-400">Declaro que os dados fornecidos são verdadeiros e autorizo contato para análise sigilosa do caso.</label>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 via-cyan-500 to-blue-600 text-navy-950 font-extrabold text-base hover:shadow-xl hover:shadow-emerald-500/20 transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-xl"></i>
+                                Enviar Solicitação via WhatsApp
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-950 border-t border-slate-800/80 py-12 text-slate-400 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-navy-950 font-black text-sm">
+                        IN
+                    </div>
+                    <div>
+                        <p class="text-white font-bold text-sm">INMEAR.com</p>
+                        <p class="text-[11px] text-slate-500">Paulo Emerson • Perícia Forense Digital, Investigação Cibernética & TIC</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="#inicio" class="hover:text-cyan-400">Início</a>
+                    <a href="#perito" class="hover:text-cyan-400">O Perito</a>
+                    <a href="#servicos" class="hover:text-cyan-400">Serviços</a>
+                    <a href="#certificacoes" class="hover:text-cyan-400">Certificações</a>
+                    <a href="#contato" class="hover:text-cyan-400">Fale Conosco</a>
+                </div>
+
+                <div class="text-center md:text-right">
+                    <p>© 2026 INMEAR. Todos os direitos reservados.</p>
+                    <p class="text-[10px] text-slate-600 mt-0.5">Cadeia de Custódia ISO/IEC 27037 • Atuação nos Países CPLP</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SUCCESS PROTOCOL MODAL -->
+    <div id="protocolModal" class="fixed inset-0 bg-navy-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-navy-900 border border-cyan-500/40 rounded-2xl max-w-md w-full p-6 text-center shadow-2xl relative glow-effect">
+            <div class="w-14 h-14 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                <i class="fa-solid fa-shield-check"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Solicitação Gerada com Sucesso</h3>
+            <p class="text-xs text-slate-300 mt-2">Sua mensagem foi formatada e o protocolo de atendimento foi aberto.</p>
+            
+            <div class="my-4 p-3 rounded-xl bg-navy-950 border border-slate-800 text-left font-mono text-xs space-y-1">
+                <p class="text-slate-400">Protocolo: <span id="modalProtocolNum" class="text-cyan-400 font-bold">#INM-2026-8842</span></p>
+                <p class="text-slate-400">Status: <span class="text-emerald-400 font-semibold">Redirecionando WhatsApp</span></p>
+                <p class="text-slate-400">Atendimento: <span class="text-slate-200">+55 61 8145-5000</span></p>
+            </div>
+
+            <div id="modalWaContainer" class="space-y-2">
+                <a id="modalWaBtn" href="#" target="_blank" class="w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-extrabold text-sm flex items-center justify-center gap-2 transition-all shadow-lg shadow-emerald-950/50">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    Abrir no WhatsApp Agora
+                </a>
+                <button onclick="closeProtocolModal()" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs transition-colors">
+                    Fechar Janela
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Accordion Logic
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('.fa-chevron-down');
+                
+                content.classList.toggle('hidden');
+                if (icon) {
+                    icon.classList.toggle('rotate-180');
+                }
+            });
+        });
+
+        // Quiz / Diagnostic Simulator Logic
+        let quizAnswers = {};
+
+        function selectQuizAnswer(category, value, nextStep) {
+            quizAnswers[category] = value;
+            
+            document.querySelectorAll('.quiz-step').forEach(step => step.classList.add('hidden'));
+            
+            const nextStepElem = document.getElementById(`quizStep${nextStep}`);
+            if (nextStepElem) {
+                nextStepElem.classList.remove('hidden');
+            }
+
+            if (nextStep === 3) {
+                // Generate Diagnostic summary
+                const resultText = document.getElementById('quizResultText');
+                if (quizAnswers.tipo === 'bancaria') {
+                    resultText.innerHTML = "Identificada necessidade de **Análise Financeira e Extração de Logs Eletrônicos**. Recomendado rastreamento imediato dos IP's das transações e solicitação judicial de preservação de dados.";
+                } else if (quizAnswers.tipo === 'invasao_empresa') {
+                    resultText.innerHTML = "Caso de alta gravidade em **Segurança da Informação / Ransomware**. Requer contenção imediata, análise de logs de firewall e formalização de relatório técnico de incidentes.";
+                } else {
+                    resultText.innerHTML = "Caso apto para **Perícia Forense Digital e Parecer Técnico de Assistência**. Recomenda-se preservação da cadeia de custódia ISO 27037 antes de qualquer modificação no hardware.";
+                }
+            }
+        }
+
+        function prefillContactForm() {
+            if (quizAnswers.tipo) {
+                const formServico = document.getElementById('formServico');
+                if (quizAnswers.tipo === 'bancaria') formServico.value = 'Análise Bancária e Financeira';
+                if (quizAnswers.tipo === 'invasao_empresa') formServico.value = 'Investigação Cibernética';
+                if (quizAnswers.tipo === 'assistencia_judicial') formServico.value = 'Assistência Técnica Judicial';
+            }
+            
+            const formMensagem = document.getElementById('formMensagem');
+            formMensagem.value = `[Triagem Automática realizada no site]: Demanda do tipo ${quizAnswers.tipo || 'Geral'}. Preservação: ${quizAnswers.preservacao || 'Não informada'}. Solicito contato para avaliação preliminar.`;
+        }
+
+        // WhatsApp Form Submit Handler
+        let currentWaUrl = '';
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const randProtocol = 'INM-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('modalProtocolNum').innerText = '#' + randProtocol;
+
+            const nome = document.getElementById('formNome').value;
+            const email = document.getElementById('formEmail').value;
+            const telefone = document.getElementById('formTelefone').value;
+            const perfil = document.getElementById('formPerfil').value;
+            const servico = document.getElementById('formServico').value;
+            const urgencia = document.getElementById('formUrgencia').value;
+            const mensagem = document.getElementById('formMensagem').value;
+
+            // Format message string for WhatsApp
+            const text = `*SOLICITAÇÃO DE PERÍCIA - INMEAR*\n` +
+                         `*Protocolo:* #${randProtocol}\n\n` +
+                         `*Nome:* ${nome}\n` +
+                         `*E-mail:* ${email}\n` +
+                         `*Telefone:* ${telefone}\n` +
+                         `*Perfil:* ${perfil}\n` +
+                         `*Serviço:* ${servico}\n` +
+                         `*Urgência:* ${urgencia}\n\n` +
+                         `*Resumo do Caso:*\n${mensagem}`;
+
+            currentWaUrl = `https://wa.me/556181455000?text=${encodeURIComponent(text)}`;
+            
+            const modalWaBtn = document.getElementById('modalWaBtn');
+            if (modalWaBtn) {
+                modalWaBtn.href = currentWaUrl;
+            }
+
+            // Open WhatsApp in new tab
+            window.open(currentWaUrl, '_blank');
+            
+            // Show modal feedback
+            document.getElementById('protocolModal').classList.remove('hidden');
+        }
+
+        function closeProtocolModal() {
+            document.getElementById('protocolModal').classList.add('hidden');
+            document.getElementById('contactForm').reset();
+        }
+
+        // Canvas de Rede Neural / Partículas Futurista com Pulsos de Dados
+        (function initNeuralCanvas() {
+            const canvas = document.getElementById('neuralCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            let width, height;
+            let particles = [];
+            let dataPackets = [];
+            let mouse = { x: null, y: null, radius: 180 };
+
+            function resize() {
+                width = canvas.width = canvas.parentElement.offsetWidth;
+                height = canvas.height = canvas.parentElement.offsetHeight;
+                createParticles();
+            }
+
+            window.addEventListener('resize', resize);
+            
+            // Interatividade com o mouse no Hero
+            const heroSection = document.getElementById('inicio');
+            if (heroSection) {
+                heroSection.addEventListener('mousemove', (e) => {
+                    const rect = canvas.getBoundingClientRect();
+                    mouse.x = e.clientX - rect.left;
+                    mouse.y = e.clientY - rect.top;
+                });
+                heroSection.addEventListener('mouseleave', () => {
+                    mouse.x = null;
+                    mouse.y = null;
+                });
+            }
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.6;
+                    this.vy = (Math.random() - 0.5) * 0.6;
+                    this.baseRadius = Math.random() * 2 + 1.2;
+                    this.radius = this.baseRadius;
+                    this.pulseAngle = Math.random() * Math.PI * 2;
+                    this.pulseSpeed = 0.03 + Math.random() * 0.02;
+                    this.color = '#00f2fe';
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    if (this.x < 0 || this.x > width) this.vx *= -1;
+                    if (this.y < 0 || this.y > height) this.vy *= -1;
+
+                    // Efeito de pulsação suave nos nós
+                    this.pulseAngle += this.pulseSpeed;
+                    this.radius = this.baseRadius + Math.sin(this.pulseAngle) * 0.8;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, Math.max(0.5, this.radius), 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = '#00f2fe';
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            }
+
+            class DataPacket {
+                constructor(p1, p2) {
+                    this.p1 = p1;
+                    this.p2 = p2;
+                    this.progress = 0;
+                    this.speed = 0.015 + Math.random() * 0.02;
+                }
+
+                update() {
+                    this.progress += this.speed;
+                }
+
+                draw() {
+                    const currentX = this.p1.x + (this.p2.x - this.p1.x) * this.progress;
+                    const currentY = this.p1.y + (this.p2.y - this.p1.y) * this.progress;
+
+                    ctx.beginPath();
+                    ctx.arc(currentX, currentY, 2.5, 0, Math.PI * 2);
+                    ctx.fillStyle = '#ffffff';
+                    ctx.shadowBlur = 12;
+                    ctx.shadowColor = '#00f2fe';
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            }
+
+            function createParticles() {
+                particles = [];
+                dataPackets = [];
+                const count = Math.min(Math.floor((width * height) / 9500), 90);
+                for (let i = 0; i < count; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+
+                // Atualizar e desenhar partículas
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+
+                    // Conectar partículas próximas
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+
+                        const maxDistance = 150;
+
+                        if (dist < maxDistance) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            const alpha = (1 - dist / maxDistance) * 0.45;
+                            ctx.strokeStyle = `rgba(0, 242, 254, ${alpha})`;
+                            ctx.lineWidth = 1;
+                            ctx.stroke();
+
+                            // Ocasionalmente disparar pulso de dados entre nós conectados
+                            if (Math.random() < 0.0015 && dataPackets.length < 15) {
+                                dataPackets.push(new DataPacket(particles[i], particles[j]));
+                            }
+                        }
+                    }
+
+                    // Conectar e reagir ao cursor do mouse
+                    if (mouse.x !== null && mouse.y !== null) {
+                        const mdx = particles[i].x - mouse.x;
+                        const mdy = particles[i].y - mouse.y;
+                        const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+
+                        if (mdist < mouse.radius) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(mouse.x, mouse.y);
+                            const mAlpha = (1 - mdist / mouse.radius) * 0.75;
+                            ctx.strokeStyle = `rgba(79, 172, 254, ${mAlpha})`;
+                            ctx.lineWidth = 1.4;
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                // Desenhar e atualizar pulsos de dados flutuantes
+                for (let i = dataPackets.length - 1; i >= 0; i--) {
+                    dataPackets[i].update();
+                    dataPackets[i].draw();
+                    if (dataPackets[i].progress >= 1) {
+                        dataPackets.splice(i, 1);
+                    }
+                }
+
+                requestAnimationFrame(animate);
+            }
+
+            resize();
+            animate();
+        })();
+
+        // Carregamento e geração dinâmica da foto do Perito Paulo Emerson
+        async function generateExpertPhoto() {
+            const profileImg = document.getElementById('profileImage');
+            const loader = document.getElementById('photoLoader');
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent?key=${apiKey}`;
+
+            const prompt = "High resolution studio portrait photograph of Paulo Emerson, male digital forensics expert in his 40s-50s with dark short curly hair, dark rectangular glasses, warm confident smile, dark charcoal suit jacket, light blue dress shirt, diagonal striped burgundy red tie, crossed arms posture, dark grey gradient studio background, entire face head and shoulders fully visible centered and clear";
+
+            let retries = 3;
+            let delay = 1000;
+
+            while (retries > 0) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: prompt }] }],
+                            generationConfig: {
+                                responseModalities: ['IMAGE'],
+                                imageConfig: { aspectRatio: "3:4" }
+                            }
+                        })
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        const base64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
+                        if (base64Data) {
+                            profileImg.src = `data:image/png;base64,${base64Data}`;
+                            if (loader) loader.classList.add('hidden');
+                            return;
+                        }
+                    }
+                } catch (err) {
+                    // Backoff silencioso
+                }
+                retries--;
+                if (retries > 0) {
+                    await new Promise(r => setTimeout(r, delay));
+                    delay *= 2;
+                }
+            }
+
+            // Fallback caso falhe
+            if (loader) loader.classList.add('hidden');
+            profileImg.src = "https://placehold.co/400x533/0b1329/00f2fe?text=Paulo+Emerson";
+        }
+
+        // Iniciar geração da foto após carregamento
+        window.addEventListener('load', () => {
+            generateExpertPhoto();
+        });
+    </script>
+
+</body>
+</html>
